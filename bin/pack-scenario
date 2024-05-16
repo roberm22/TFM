@@ -1,0 +1,15 @@
+#!/bin/bash
+
+SCENARIO=tutorial_kubespray.xml
+VERS='02'
+
+# Move to the upper directory where this script is
+cdir=$( dirname $0 )
+cd $cdir/..
+
+vnx --pack $SCENARIO \
+    --pack-version $VERS \
+    --pack-add-files \
+        ansible conf examples openstack_lab-vms-vlan.xml bin \
+    $1 $2 $3
+
