@@ -1,1 +1,14 @@
-Calico branch
+## Calico branch
+
+git checkout calico
+git branch -r
+git branch
+
+git add --all
+git commit -m "Test"
+git push
+
+Ya no es necesario: 
+- git rm --cached ansible/kubespray
+- git push --set-upstream origin calico
+
