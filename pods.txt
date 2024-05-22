@@ -1,0 +1,13 @@
+## COMANDOS
+
+kubectl apply -f examples/pod1-worker1.yml
+
+kubectl apply -f examples/pod2-worker2.yml
+
+
+
+kubectl get pods -o wide
+
+kubectl describe pod pod1-worker1
+
+kubectl exec pod1-worker1 -c busy1-1 -- ifconfig

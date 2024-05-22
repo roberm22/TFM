@@ -10,3 +10,14 @@
 - import_playbook: kubespray/cluster.yml
   tags: kubespray
 
+- hosts: kube-master[0]
+  roles:
+    - metallb
+  tags: metallb
+
+- hosts: kube-master[0]
+  roles:
+    - nginx-ingress
+  tags: nginx-ingress
+  
+  
