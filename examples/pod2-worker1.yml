@@ -11,7 +11,3 @@ spec:
       - "3600"
   nodeSelector:
     kubernetes.io/hostname: k8s-worker1
-    
-    
-    
-    

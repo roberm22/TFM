@@ -1,0 +1,26 @@
+## COMANDOS
+
+kubectl apply -f examples/pod1-worker1.yml
+
+kubectl apply -f examples/pod2-worker2.yml
+
+
+
+kubectl get pods -o wide
+
+kubectl describe pod pod1-worker1
+
+###### otros #######
+
+kubectl exec pod1-worker1 -c busy1-1 -- ifconfig
+kubectl exec pod2-worker2 -c busy1-1 -- ifconfig
+
+kubectl exec pod1-worker1 -c busy1-1 -- ip addr
+kubectl exec pod2-worker2 -c busy1-1 -- ip addr
+
+
+
+kubectl get pods -n kube-system -o wide
+kubectl get pods --all-namespaces -o wide
+
+
