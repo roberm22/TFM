@@ -11,7 +11,7 @@ Despues de tener las claves SSH configuradas ejecutar el siguiente comando en el
 git clone git@github.com:roberm22/TFM.git
 ```
 
-## Weave
+## Flannel
 
 Pendiente desarrollar
 
