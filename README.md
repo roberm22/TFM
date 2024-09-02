@@ -1,6 +1,4 @@
-# CLÚSTER DE KUBERNETES USANDO FLANNEL
-
-DESARROLLO DE ESCENARIOS VIRTUALES DIDÁCTICOS PARA EL ESTUDIO COMPARATIVO DE SOLUCIONES DE RED EN KUBERNETES
+# Clúster de Kubernetes usando Flannel
 
 Escenario de VNX que despliega un clúster de Kubernetes de tres nodos, listo para producción, utilizando las utilidades de [Kubespray](https://kubespray.io/#/).
 
