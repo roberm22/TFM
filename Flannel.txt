@@ -1,4 +1,4 @@
-## Calico branch
+## Flannel branch
 
 git checkout flannel
 git branch -r
@@ -8,7 +8,4 @@ git add --all
 git commit -m "Test"
 git push
 
-Ya no es necesario: 
-- git rm --cached ansible/kubespray
-- git push --set-upstream origin calico
 
