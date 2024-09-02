@@ -4,7 +4,7 @@ Escenario de VNX que despliega un clúster de Kubernetes de tres nodos, listo pa
 
 ![kubespray](docs/kubespray-logo.png)
 
-En esta versión del escenario, se utiliza el plugin de red [Flannel CNI](https://github.com/flannel-io/flannel).
+En esta versión del escenario, se utiliza el plugin de red [Calico CNI](https://github.com/projectcalico/calico).
 
 ## Topología del escenario
 
