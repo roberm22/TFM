@@ -1,17 +1,95 @@
-# TFM
+# CLÚSTER DE KUBERNETES USANDO FLANNEL
 
-## Como utilizar un repositorio privado
+DESARROLLO DE ESCENARIOS VIRTUALES DIDÁCTICOS PARA EL ESTUDIO COMPARATIVO DE SOLUCIONES DE RED EN KUBERNETES
 
-En los reposistorios privados se necesita verificar la identidad. Solo es necesario hacerlo una única vez en el equipo que se quiera usar.
-La guia oficial para [generar una nueva clave SSH](https://docs.github.com/es/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#generating-a-new-ssh-key) y [agregar una clave SSH y usarla para la autenticación](https://docs.github.com/es/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account#adding-a-new-ssh-key-to-your-account).
+Escenario de VNX que despliega un clúster de Kubernetes de tres nodos, listo para producción, utilizando las utilidades de [Kubespray](https://kubespray.io/#/).
 
-Despues de tener las claves SSH configuradas ejecutar el siguiente comando en el directorio donde se quiera clonar:
+![kubespray](docs/kubespray-logo.png)
+
+En esta versión del escenario, se utiliza el plugin de red [Flannel CNI](https://github.com/flannel-io/flannel).
+
+## Topología del escenario
+
+![Escenario de VNX Kubespray](docs/scenario.png)
+
+Los nodos de Kubernetes se despliegan como máquinas virtuales KVM, mientras que r1 es un contenedores LXC.
+
+## Requisitos
+
+- Sistema Operativo Linux
+- Software VNX -> [Guía de Instalación de VNX](https://web.dit.upm.es/vnxwiki/index.php/Vnx-install)
+- Conexión a Internet
+- Requisitos de hardware: mínimo 8 GB de RAM y 4 núcleos de CPU
+
+Es recomendable ejecutar este escenario en los PCs del laboratorio del DIT.
+
+## Configuración e inicio
+
+Para desplegar el clúster, se debe ejecutar el script `deploy.sh`. Este script automatiza la creación del escenario.
 
 ```bash
-git clone git@github.com:roberm22/TFM.git
+
+r.mluengo@l116:~/Documentos/TFM$ ./deploy.sh
+
+```
+El despliegue del clúster tarda aproximadamente 20 minutos.
+
+## Interactuando con el clúster
+
+VNX crea un enlace punto a punto para el acceso de gestión y genera dinámicamente un archivo de configuración SSH para el escenario. 
+Como resultado, se puede acceder fácilmente a los nodos de Kubernetes y a los demás elementos de la red de la siguiente manera:
+
+```bash
+
+# Nodo master
+ssh k8s-master
+
+# Nodos worker
+ssh k8s-worker1
+ssh k8s-worker2
+
+# Router
+ssh r1
+
 ```
 
-## Flannel
+## Fin del escenario
 
-Pendiente desarrollar
+Para destruir el escenario, se debe ejecutar el script end.sh.
+
+```bash
+
+r.mluengo@l116:~/Documentos/TFM$ ./end.sh
+
+```
+
+## Comandos útiles
+
+El archivo pod.txt incluye comandos útiles para desplegar y gestionar pods en el clúster:
+
+```bash
+
+kubectl apply -f examples/pod1-worker1.yml
+kubectl apply -f examples/pod2-worker2.yml
+kubectl get pods -o wide
+kubectl describe pod pod1-worker1
+
+kubectl exec pod1-worker1 -c busy1-1 -- ifconfig
+kubectl exec pod2-worker2 -c busy1-1 -- ifconfig
+
+kubectl exec pod1-worker1 -c busy1-1 -- ip addr
+kubectl exec pod2-worker2 -c busy1-1 -- ip addr
+
+kubectl get pods -n kube-system -o wide
+kubectl get pods --all-namespaces -o wide
+
+```
+
+
+
+
+
+
+
+
 
