@@ -1,4 +1,4 @@
-## Calico branch
+## Weave branch
 
 git checkout weave
 git branch -r
@@ -9,12 +9,6 @@ git add --A
 git commit -m "Test"
 git push
 
-Ya no es necesario: 
-- git rm --cached ansible/kubespray
-- git push --set-upstream origin calico
-
-
-
-
+-----
 git fetch origin weave
 git reset --hard origin/weave
